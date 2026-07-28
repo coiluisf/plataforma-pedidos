@@ -5,7 +5,7 @@ session_start();
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Zife Order - Cardápio Digital para Restaurantes</title>
     <link rel="stylesheet" href="/public/css/landing.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
