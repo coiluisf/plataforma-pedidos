@@ -90,9 +90,26 @@ body {
 }
 
 .nav-item .icon {
-    font-size: 18px;
+    font-size: 16px;
     width: 20px;
+    height: 20px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item.active .icon-dashboard::before { content: "📊"; }
+.nav-item.active .icon-orders::before { content: "📋"; }
+.nav-item.active .icon-menu::before { content: "🍽️"; }
+.nav-item.active .icon-payments::before { content: "💳"; }
+.nav-item.active .icon-tables::before { content: "🪑"; }
+.nav-item.active .icon-reports::before { content: "📈"; }
+.nav-item.active .icon-settings::before { content: "⚙️"; }
+
+.nav-item:not(.active) .icon::before {
+    content: "▪";
+    font-size: 8px;
 }
 
 .sidebar-footer {
@@ -215,6 +232,23 @@ body {
     font-size: 28px;
     color: white;
     flex-shrink: 0;
+    font-weight: 700;
+}
+
+.stat-icon.orders-icon {
+    background: linear-gradient(135deg, var(--status-new) 0%, #D63A13 100%);
+}
+
+.stat-icon.revenue-icon {
+    background: linear-gradient(135deg, var(--success) 0%, #3A6640 100%);
+}
+
+.stat-icon.calendar-icon {
+    background: linear-gradient(135deg, var(--warning) 0%, #A8731B 100%);
+}
+
+.stat-icon.chart-icon {
+    background: linear-gradient(135deg, var(--dark) 0%, #3A3530 100%);
 }
 
 .stat-details {

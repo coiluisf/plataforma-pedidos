@@ -30,31 +30,31 @@ $restaurant = $db->fetch('SELECT * FROM restaurants WHERE id = ?', [$_SESSION['r
             </div>
             <nav class="sidebar-nav">
                 <a href="/admin/dashboard" class="nav-item active">
-                    <span class="icon">📊</span>
+                    <span class="icon icon-dashboard"></span>
                     <span>Visão Geral</span>
                 </a>
                 <a href="/admin/orders" class="nav-item">
-                    <span class="icon">📋</span>
+                    <span class="icon icon-orders"></span>
                     <span>Pedidos</span>
                 </a>
                 <a href="/admin/menu" class="nav-item">
-                    <span class="icon">🍽️</span>
+                    <span class="icon icon-menu"></span>
                     <span>Cardápio</span>
                 </a>
                 <a href="/admin/payments" class="nav-item">
-                    <span class="icon">💳</span>
+                    <span class="icon icon-payments"></span>
                     <span>Pagamentos</span>
                 </a>
                 <a href="/admin/tables" class="nav-item">
-                    <span class="icon">🪑</span>
+                    <span class="icon icon-tables"></span>
                     <span>Mesas</span>
                 </a>
                 <a href="/admin/reports" class="nav-item">
-                    <span class="icon">📈</span>
+                    <span class="icon icon-reports"></span>
                     <span>Relatórios</span>
                 </a>
                 <a href="/admin/settings" class="nav-item">
-                    <span class="icon">⚙️</span>
+                    <span class="icon icon-settings"></span>
                     <span>Configurações</span>
                 </a>
             </nav>
@@ -81,28 +81,28 @@ $restaurant = $db->fetch('SELECT * FROM restaurants WHERE id = ?', [$_SESSION['r
                 <!-- Stat Cards -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon" style="background-color: #E8491D;">📋</div>
+                        <div class="stat-icon orders-icon"></div>
                         <div class="stat-details">
                             <p class="stat-label">Pedidos Hoje</p>
                             <p class="stat-value" id="todayOrders">0</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon" style="background-color: #4B7F52;">💰</div>
+                        <div class="stat-icon revenue-icon"></div>
                         <div class="stat-details">
                             <p class="stat-label">Faturamento Hoje</p>
                             <p class="stat-value" id="todayRevenue">R$ 0</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon" style="background-color: #C98A1D;">📅</div>
+                        <div class="stat-icon calendar-icon"></div>
                         <div class="stat-details">
                             <p class="stat-label">Pedidos Mês</p>
                             <p class="stat-value" id="monthOrders">0</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon" style="background-color: #1B1512;">📊</div>
+                        <div class="stat-icon chart-icon"></div>
                         <div class="stat-details">
                             <p class="stat-label">Faturamento Mês</p>
                             <p class="stat-value" id="monthRevenue">R$ 0</p>
