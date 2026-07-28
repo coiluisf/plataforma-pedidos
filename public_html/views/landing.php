@@ -43,21 +43,51 @@ session_start();
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Cardápio Digital Profissional para Seu Restaurante</h1>
-                <p class="hero-subtitle">Venda mais, reduza custos, gerencie pedidos em tempo real. Tudo em uma plataforma simples.</p>
+                <h1>Solução Digital Completa para Seu Restaurante</h1>
+                <p class="hero-subtitle">Transforme seu cardápio em uma máquina de vendas. Gerenciamento de pedidos, pagamentos online e relatórios em tempo real, tudo integrado.</p>
                 <div class="hero-cta">
                     <?php if (!isset($_SESSION['restaurant_id'])): ?>
                         <a href="/auth/register" class="btn btn-primary btn-large">Começar Grátis</a>
-                        <a href="/app/menu" class="btn btn-secondary btn-large">Ver Demo</a>
+                        <a href="/app/menu?restaurant=1" class="btn btn-secondary btn-large">Ver Demo</a>
                     <?php else: ?>
-                        <a href="/admin/dashboard" class="btn btn-primary btn-large">Ir para Dashboard</a>
+                        <a href="/admin/dashboard" class="btn btn-primary btn-large">Acessar Painel</a>
                     <?php endif; ?>
                 </div>
                 <div class="hero-mockup">
                     <div class="phone-frame">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=800&fit=crop" alt="Cardápio Digital">
+                            <div class="phone-content">
+                                <div class="phone-header">
+                                    <span class="phone-time">9:41</span>
+                                </div>
+                                <div class="phone-menu">
+                                    <div class="menu-header">
+                                        <h2>Seu Cardápio</h2>
+                                    </div>
+                                    <div class="menu-categories">
+                                        <div class="category-pill active">Todos</div>
+                                        <div class="category-pill">Prato Principal</div>
+                                        <div class="category-pill">Bebidas</div>
+                                    </div>
+                                    <div class="menu-items">
+                                        <div class="menu-item">
+                                            <div class="item-image" style="background: linear-gradient(135deg, #C98A1D 0%, #E8491D 100%);"></div>
+                                            <div class="item-info">
+                                                <h3>Prato Especial</h3>
+                                                <p class="item-price">R$ 38,90</p>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item">
+                                            <div class="item-image" style="background: linear-gradient(135deg, #4B7F52 0%, #6BA873 100%);"></div>
+                                            <div class="item-info">
+                                                <h3>Bebida Refrescante</h3>
+                                                <p class="item-price">R$ 8,90</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,19 +100,31 @@ session_start();
         <div class="container">
             <div class="value-grid">
                 <div class="value-card">
-                    <div class="value-icon">💰</div>
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5m-5 6h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
                     <h3>Preço Justo</h3>
-                    <p>Plano Grátis com tudo que você precisa. Atualize quando crescer.</p>
+                    <p>Comece grátis, sem cartão de crédito. Pagamento transparente e sem surpresas quando precisar escalar.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🔗</div>
-                    <h3>Integrações</h3>
-                    <p>Pagamento por Pix e cartão. Notificações em tempo real.</p>
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 4l-7 7 2.12-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Integração Completa</h3>
+                    <p>Pix e cartão integrados. Pagamentos instantâneos e notificações automáticas de pedidos em tempo real.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3>Suporte</h3>
-                    <p>Equipe pronta para ajudar no seu sucesso.</p>
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/>
+                        </svg>
+                    </div>
+                    <h3>Sempre Online</h3>
+                    <p>Infraestrutura confiável que funciona 24/7. Seu cardápio disponível quando seus clientes precisarem.</p>
                 </div>
             </div>
         </div>
@@ -91,31 +133,37 @@ session_start();
     <!-- Features Bento -->
     <section class="features" id="features">
         <div class="container">
-            <h2>Recursos Completos</h2>
+            <h2>Tudo que Você Precisa</h2>
             <div class="bento-grid">
                 <div class="bento-card bento-large">
-                    <h3>Cardápio Digital</h3>
-                    <p>Cardápio bonito e fácil de usar, com fotos dos pratos e disponibilidade em tempo real.</p>
+                    <div class="feature-icon">📱</div>
+                    <h3>Cardápio Mobile-First</h3>
+                    <p>Interface otimizada para celular que seus clientes acessam direto do navegador. Sem app para baixar, sem complicações.</p>
                 </div>
                 <div class="bento-card">
-                    <h3>Pedidos Online</h3>
-                    <p>Delivery, mesa ou balcão. Tudo integrado.</p>
+                    <div class="feature-icon">🛒</div>
+                    <h3>Carrinho Inteligente</h3>
+                    <p>Adicionar itens é simples e rápido. Salvo automaticamente no celular.</p>
                 </div>
                 <div class="bento-card">
-                    <h3>Pagamento Seguro</h3>
-                    <p>Pix e cartão com segurança garantida.</p>
+                    <div class="feature-icon">💳</div>
+                    <h3>Pagamento Integrado</h3>
+                    <p>Pix ou cartão. Seguro e instantâneo com Mercado Pago.</p>
                 </div>
                 <div class="bento-card">
-                    <h3>Dashboard Admin</h3>
-                    <p>Gerencie pedidos, cardápio e relatórios em um só lugar.</p>
+                    <div class="feature-icon">📊</div>
+                    <h3>Painel Administrativo</h3>
+                    <p>Controle total: pedidos, cardápio, pagamentos e relatórios em um único lugar.</p>
                 </div>
                 <div class="bento-card bento-large">
-                    <h3>Notificações em Tempo Real</h3>
-                    <p>Receba alertas de novos pedidos e atualizações de status ao vivo.</p>
+                    <div class="feature-icon">⚡</div>
+                    <h3>Gerenciamento de Pedidos em Tempo Real</h3>
+                    <p>Kanban visual com arrastar e soltar. Mova pedidos de novo para pronto enquanto seus clientes acompanham o status em tempo real.</p>
                 </div>
                 <div class="bento-card">
-                    <h3>Relatórios</h3>
-                    <p>Veja o desempenho do seu negócio com dados detalhados.</p>
+                    <div class="feature-icon">📈</div>
+                    <h3>Dados e Analytics</h3>
+                    <p>Gráficos detalhados de vendas, itens mais populares e métricas de desempenho.</p>
                 </div>
             </div>
         </div>
@@ -124,22 +172,22 @@ session_start();
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <h2>Como Funciona em 3 Passos</h2>
+            <h2>Processo Simples</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Cadastre seu Restaurante</h3>
-                    <p>Registre-se em minutos e comece com o plano Grátis.</p>
+                    <h3>Registre seu Restaurante</h3>
+                    <p>Crie sua conta em 2 minutos. Sem cartão de crédito necessário. Comece com o plano Grátis incluindo 5 categorias e até 20 itens.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Suba seu Cardápio</h3>
-                    <p>Adicione categorias, itens, fotos e preços facilmente.</p>
+                    <h3>Configure seu Cardápio</h3>
+                    <p>Adicione seus pratos com nome, descrição, preço e foto. Interface intuitiva que qualquer um pode usar. Ative ou desative itens quando quiser.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Comece a Vender</h3>
-                    <p>Compartilhe o link do seu cardápio e receba pedidos online.</p>
+                    <h3>Receba Pedidos</h3>
+                    <p>Compartilhe um link com seus clientes. Eles acessam pelo celular, fazem o pedido, pagam online. Você recebe em tempo real no seu painel.</p>
                 </div>
             </div>
         </div>
@@ -154,11 +202,11 @@ session_start();
                     <h3>Grátis</h3>
                     <p class="price">R$ 0<span>/mês</span></p>
                     <ul class="features-list">
-                        <li>✓ Cardápio digital</li>
-                        <li>✓ Até 5 categorias</li>
-                        <li>✓ Até 20 itens</li>
-                        <li>✓ Até 50 pedidos/mês</li>
-                        <li>✗ Suporte</li>
+                        <li>Cardápio digital completo</li>
+                        <li>Até 5 categorias</li>
+                        <li>Até 20 itens</li>
+                        <li>Até 50 pedidos/mês</li>
+                        <li class="unavailable">Suporte exclusivo</li>
                     </ul>
                     <a href="/auth/register" class="btn btn-secondary btn-full">Começar Agora</a>
                 </div>
@@ -167,11 +215,11 @@ session_start();
                     <h3>Starter</h3>
                     <p class="price">R$ 49<span>/mês</span></p>
                     <ul class="features-list">
-                        <li>✓ Tudo do Grátis</li>
-                        <li>✓ Até 20 categorias</li>
-                        <li>✓ Até 100 itens</li>
-                        <li>✓ Até 500 pedidos/mês</li>
-                        <li>✓ Suporte por email</li>
+                        <li>Tudo do plano Grátis</li>
+                        <li>Até 20 categorias</li>
+                        <li>Até 100 itens</li>
+                        <li>Até 500 pedidos/mês</li>
+                        <li>Suporte por email</li>
                     </ul>
                     <a href="/auth/register" class="btn btn-primary btn-full">Começar Agora</a>
                 </div>
@@ -179,11 +227,11 @@ session_start();
                     <h3>Pro</h3>
                     <p class="price">R$ 99<span>/mês</span></p>
                     <ul class="features-list">
-                        <li>✓ Tudo do Starter</li>
-                        <li>✓ Ilimitado</li>
-                        <li>✓ Suporte prioritário</li>
-                        <li>✓ Relatórios avançados</li>
-                        <li>✓ Integrações customizadas</li>
+                        <li>Tudo do plano Starter</li>
+                        <li>Itens e categorias ilimitados</li>
+                        <li>Suporte prioritário 24/7</li>
+                        <li>Relatórios avançados</li>
+                        <li>Integrações customizadas</li>
                     </ul>
                     <a href="/auth/register" class="btn btn-primary btn-full">Começar Agora</a>
                 </div>
@@ -194,22 +242,26 @@ session_start();
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <h2>O que Dizem Sobre Nós</h2>
+            <h2>Resultado Real de Clientes</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Aumentei minhas vendas online em 40% no primeiro mês. Recomendo muito!"</p>
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"Recebo os pedidos em tempo real no meu telefone, consigo gerenciar tudo da cozinha. Meus clientes amam a facilidade de encomendar pelo celular."</p>
                     <div class="author">
-                        <strong>João Silva</strong>
-                        <p>Dono de Pizzaria, São Paulo</p>
+                        <strong>Restaurante Bom Paladar</strong>
+                        <p>Praça da República, São Paulo</p>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Simples de usar, mas muito poderoso. Melhor custo-benefício do mercado."</p>
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"A implementação foi rápida, o painel é intuitivo e o suporte responde rápido. Já aumentei meu cardápio e estou usando o plano Starter."</p>
                     <div class="author">
-                        <strong>Maria Santos</strong>
-                        <p>Proprietária de Restaurante, Rio de Janeiro</p>
+                        <strong>Pizzaria Da Nonna</strong>
+                        <p>Vila Mariana, São Paulo</p>
                     </div>
                 </div>
             </div>
