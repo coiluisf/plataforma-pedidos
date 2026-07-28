@@ -175,6 +175,49 @@ $restaurant_id = $_GET['restaurant'] ?? 1;
             font-size: 10px;
             margin-left: 4px;
         }
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 14px;
+            color: #7A6A5E;
+        }
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #E0D5CA;
+            border-top-color: #E8491D;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .error-message {
+            background: #FDEAEA;
+            border: 1px solid #EFCCCF;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 16px;
+            color: #D32F2F;
+            font-size: 13px;
+            text-align: center;
+        }
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            color: #7A6A5E;
+            text-align: center;
+        }
+        .empty-state-text {
+            font-size: 14px;
+            margin-top: 12px;
+        }
         @media (max-width: 500px) {
             .phone-wrapper {
                 width: 100%;
@@ -191,15 +234,20 @@ $restaurant_id = $_GET['restaurant'] ?? 1;
         <div class="phone-notch"></div>
         <div class="phone-screen">
             <div class="app-header">
-                <div class="app-title">📱 Cardápio</div>
+                <div class="app-title">Cardápio</div>
                 <div class="categories-pills" id="categoriesPills"></div>
             </div>
 
-            <div class="app-content" id="menuContent"></div>
+            <div class="app-content" id="menuContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    Carregando cardápio...
+                </div>
+            </div>
 
             <div class="app-footer">
                 <button class="btn-cart" onclick="goToCart()">
-                    🛒 Ver Sacola <span class="cart-badge" id="cartCount">0</span>
+                    Ver Sacola <span class="cart-badge" id="cartCount">0</span>
                 </button>
             </div>
         </div>
@@ -215,10 +263,21 @@ $restaurant_id = $_GET['restaurant'] ?? 1;
 
         function loadMenu() {
             fetch(`/api/menu/restaurant/${restaurantId}`)
-                .then(r => r.json())
+                .then(r => {
+                    if (!r.ok) throw new Error('Erro ao carregar cardápio');
+                    return r.json();
+                })
                 .then(categories => {
-                    renderCategories(categories);
-                    loadCartFromStorage();
+                    if (!categories || categories.length === 0) {
+                        showEmptyState();
+                    } else {
+                        renderCategories(categories);
+                        loadCartFromStorage();
+                    }
+                })
+                .catch(error => {
+                    console.error('Menu load error:', error);
+                    showError('Não foi possível carregar o cardápio. Tente novamente.');
                 });
         }
 
@@ -231,7 +290,11 @@ $restaurant_id = $_GET['restaurant'] ?? 1;
             document.getElementById('categoriesPills').innerHTML = pills;
 
             const menu = categories[0]?.items || [];
-            renderMenuItems(menu);
+            if (menu.length === 0) {
+                showEmptyState();
+            } else {
+                renderMenuItems(menu);
+            }
         }
 
         function filterCategory(catId, btn) {
@@ -304,6 +367,21 @@ $restaurant_id = $_GET['restaurant'] ?? 1;
 
         function goToCart() {
             window.location.href = '/app/cart';
+        }
+
+        function showError(message) {
+            document.getElementById('menuContent').innerHTML = `
+                <div class="error-message">${message}</div>
+            `;
+        }
+
+        function showEmptyState() {
+            document.getElementById('menuContent').innerHTML = `
+                <div class="empty-state">
+                    <div style="font-size: 32px;">∘</div>
+                    <div class="empty-state-text">Nenhum item disponível<br>no cardápio</div>
+                </div>
+            `;
         }
     </script>
 </body>
