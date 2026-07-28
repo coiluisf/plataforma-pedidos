@@ -17,19 +17,7 @@ $restaurant = $db->fetch('SELECT * FROM restaurants WHERE id = ?', [$_SESSION['r
 </head>
 <body>
     <div class="admin-layout">
-        <aside class="sidebar">
-            <div class="sidebar-header"><h2>Zife Order</h2></div>
-            <nav class="sidebar-nav">
-                <a href="/admin/dashboard" class="nav-item"><span class="icon">📊</span><span>Visão Geral</span></a>
-                <a href="/admin/orders" class="nav-item"><span class="icon">📋</span><span>Pedidos</span></a>
-                <a href="/admin/menu" class="nav-item"><span class="icon">🍽️</span><span>Cardápio</span></a>
-                <a href="/admin/payments" class="nav-item"><span class="icon">💳</span><span>Pagamentos</span></a>
-                <a href="/admin/tables" class="nav-item"><span class="icon">🪑</span><span>Mesas</span></a>
-                <a href="/admin/reports" class="nav-item"><span class="icon">📈</span><span>Relatórios</span></a>
-                <a href="/admin/settings" class="nav-item active"><span class="icon">⚙️</span><span>Configurações</span></a>
-            </nav>
-            <div class="sidebar-footer"><a href="/auth/logout" class="btn-logout">Sair</a></div>
-        </aside>
+        <?php require __DIR__ . '/_sidebar.php'; ?>
 
         <main class="admin-main">
             <div class="topbar">
