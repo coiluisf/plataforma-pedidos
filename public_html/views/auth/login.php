@@ -282,10 +282,6 @@ if (isset($_SESSION['restaurant_id'])) {
                     body: JSON.stringify({email, password})
                 });
 
-                if (!response.ok) {
-                    throw new Error('Erro na conexão com o servidor');
-                }
-
                 const data = await response.json();
 
                 if (data.success) {
@@ -295,7 +291,7 @@ if (isset($_SESSION['restaurant_id'])) {
                     await new Promise(resolve => setTimeout(resolve, 800));
                     window.location.replace('/admin/dashboard');
                 } else {
-                    // Erro de credenciais
+                    // Erro de credenciais ou servidor
                     showErrorModal(data.error || 'Email ou senha inválidos. Tente novamente.');
                     submitBtn.disabled = false;
                     btnText.style.display = 'block';

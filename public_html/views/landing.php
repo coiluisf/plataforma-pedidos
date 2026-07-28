@@ -11,6 +11,69 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+            padding: 4px 8px;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            z-index: 999;
+            padding: 80px 20px 20px;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-menu.open {
+            left: 0;
+        }
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 16px 0;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #E0D5CA;
+            font-size: 16px;
+        }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 998;
+        }
+        .mobile-menu-overlay.open {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -26,6 +89,7 @@ session_start();
                     <a href="#pricing">Preços</a>
                     <a href="#testimonials">Depoimentos</a>
                 </div>
+                <button class="mobile-menu-toggle" onclick="openMobileMenu()">☰</button>
                 <div class="nav-cta">
                     <?php if (isset($_SESSION['restaurant_id'])): ?>
                         <a href="/admin/dashboard" class="btn btn-primary">Painel Admin</a>
@@ -37,6 +101,16 @@ session_start();
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
+        <a href="#features" onclick="closeMobileMenu()">Recursos</a>
+        <a href="#how-it-works" onclick="closeMobileMenu()">Como Funciona</a>
+        <a href="#pricing" onclick="closeMobileMenu()">Preços</a>
+        <a href="#testimonials" onclick="closeMobileMenu()">Depoimentos</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -327,11 +401,32 @@ session_start();
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Zife Order. Todos os direitos reservados.</p>
+                <p>&copy; <span id="year"></span> Zife Order. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Atualizar ano do copyright automaticamente
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('mobileMenuOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileMenuOverlay').classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+    </script>
     <script src="/public/js/landing.js"></script>
 </body>
 </html>
