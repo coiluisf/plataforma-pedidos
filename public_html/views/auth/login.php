@@ -146,7 +146,10 @@ if (isset($_SESSION['restaurant_id'])) {
             try {
                 const response = await fetch('/api/auth.php?action=login', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
                     body: JSON.stringify({email, password})
                 });
 

@@ -136,32 +136,55 @@ session_start();
             <h2>Tudo que Você Precisa</h2>
             <div class="bento-grid">
                 <div class="bento-card bento-large">
-                    <div class="feature-icon">📱</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18.01"/>
+                        </svg>
+                    </div>
                     <h3>Cardápio Mobile-First</h3>
                     <p>Interface otimizada para celular que seus clientes acessam direto do navegador. Sem app para baixar, sem complicações.</p>
                 </div>
                 <div class="bento-card">
-                    <div class="feature-icon">🛒</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                    </div>
                     <h3>Carrinho Inteligente</h3>
                     <p>Adicionar itens é simples e rápido. Salvo automaticamente no celular.</p>
                 </div>
                 <div class="bento-card">
-                    <div class="feature-icon">💳</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </div>
                     <h3>Pagamento Integrado</h3>
                     <p>Pix ou cartão. Seguro e instantâneo com Mercado Pago.</p>
                 </div>
                 <div class="bento-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </div>
                     <h3>Painel Administrativo</h3>
                     <p>Controle total: pedidos, cardápio, pagamentos e relatórios em um único lugar.</p>
                 </div>
                 <div class="bento-card bento-large">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
                     <h3>Gerenciamento de Pedidos em Tempo Real</h3>
                     <p>Kanban visual com arrastar e soltar. Mova pedidos de novo para pronto enquanto seus clientes acompanham o status em tempo real.</p>
                 </div>
                 <div class="bento-card">
-                    <div class="feature-icon">📈</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                        </svg>
+                    </div>
                     <h3>Dados e Analytics</h3>
                     <p>Gráficos detalhados de vendas, itens mais populares e métricas de desempenho.</p>
                 </div>

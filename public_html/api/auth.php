@@ -3,7 +3,7 @@ require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/database.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
-$action = $GLOBALS['_REQUEST_ACTION'] ?? ($_POST['action'] ?? null);
+$action = $_POST['action'] ?? $_GET['action'] ?? null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($action) {

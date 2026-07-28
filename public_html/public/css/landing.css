@@ -389,9 +389,21 @@ body {
 }
 
 .feature-icon {
-    font-size: 40px;
+    width: 56px;
+    height: 56px;
     margin-bottom: 16px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary) 0%, #D63A13 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.feature-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
 }
 
 .bento-card h3 {
