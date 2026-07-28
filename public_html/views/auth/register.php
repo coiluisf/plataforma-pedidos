@@ -41,6 +41,11 @@ if (isset($_SESSION['restaurant_id'])) {
             font-size: 28px;
             color: #1B1512;
         }
+        .logo p {
+            color: #7A6A5E;
+            font-size: 14px;
+            margin-top: 4px;
+        }
         .form-group {
             margin-bottom: 16px;
         }
@@ -92,48 +97,50 @@ if (isset($_SESSION['restaurant_id'])) {
 <body>
     <div class="register-container">
         <div class="logo">
-            <h1>🍽️ Zife Order</h1>
+            <h1>Zife Order</h1>
+            <p>Comece Grátis</p>
         </div>
-
-        <h2 style="font-family: 'Bricolage Grotesque'; font-size: 20px; margin-bottom: 20px; text-align: center;">Criar Conta</h2>
 
         <form onsubmit="handleRegister(event)">
             <div class="form-group">
                 <label class="form-label">Nome do Restaurante</label>
-                <input type="text" id="name" class="form-input" required>
+                <input type="text" id="name" class="form-input" placeholder="Seu Restaurante" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Email</label>
-                <input type="email" id="email" class="form-input" required>
+                <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Telefone</label>
-                <input type="tel" id="phone" class="form-input">
+                <input type="tel" id="phone" class="form-input" placeholder="(11) 99999-9999">
             </div>
 
             <div class="form-group">
                 <label class="form-label">Senha</label>
-                <input type="password" id="password" class="form-input" required>
+                <input type="password" id="password" class="form-input" placeholder="Mínimo 6 caracteres" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Confirmar Senha</label>
-                <input type="password" id="password_confirm" class="form-input" required>
+                <input type="password" id="password_confirm" class="form-input" placeholder="Confirme sua senha" required>
             </div>
 
-            <button type="submit" class="btn">Criar Conta Grátis</button>
+            <button type="submit" class="btn" id="submitBtn">Criar Conta Grátis</button>
         </form>
 
         <div class="login-link">
-            Já tem conta? <a href="/auth/login">Faça login</a>
+            Já tem conta? <a href="/auth/login">Faça login aqui</a>
         </div>
     </div>
 
     <script>
         async function handleRegister(e) {
             e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
 
             const data = {
                 name: document.getElementById('name').value,
@@ -143,18 +150,32 @@ if (isset($_SESSION['restaurant_id'])) {
                 password_confirm: document.getElementById('password_confirm').value
             };
 
-            const response = await fetch('/api/auth.php?action=register', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
-            });
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Criando conta...';
 
-            const result = await response.json();
+            try {
+                const response = await fetch('/api/auth.php?action=register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
 
-            if (result.success) {
-                window.location.href = '/admin/dashboard';
-            } else {
-                alert(result.error || 'Erro ao registrar');
+                const result = await response.json();
+
+                if (result.success) {
+                    submitBtn.textContent = 'Sucesso!';
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard';
+                    }, 500);
+                } else {
+                    alert(result.error || 'Erro ao registrar conta');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            } catch (error) {
+                alert('Erro de conexão. Tente novamente.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
             }
         }
     </script>

@@ -106,28 +106,28 @@ if (isset($_SESSION['restaurant_id'])) {
 <body>
     <div class="login-container">
         <div class="logo">
-            <h1>🍽️ Zife Order</h1>
-            <p>Cardápio Digital</p>
+            <h1>Zife Order</h1>
+            <p>Painel do Restaurante</p>
         </div>
 
         <form onsubmit="handleLogin(event)">
             <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" id="email" class="form-input" required>
+                <label class="form-label">Email do Restaurante</label>
+                <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
                 <div class="error" id="emailError"></div>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Senha</label>
-                <input type="password" id="password" class="form-input" required>
+                <input type="password" id="password" class="form-input" placeholder="Sua senha" required>
                 <div class="error" id="passwordError"></div>
             </div>
 
-            <button type="submit" class="btn">Entrar</button>
+            <button type="submit" class="btn" id="submitBtn">Entrar no Painel</button>
         </form>
 
         <div class="register-link">
-            Não tem conta? <a href="/auth/register">Registre-se agora</a>
+            Novo? <a href="/auth/register">Crie uma conta grátis</a>
         </div>
     </div>
 
@@ -137,19 +137,35 @@ if (isset($_SESSION['restaurant_id'])) {
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
 
-            const response = await fetch('/api/auth.php?action=login', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({email, password})
-            });
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Conectando...';
 
-            const data = await response.json();
+            try {
+                const response = await fetch('/api/auth.php?action=login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, password})
+                });
 
-            if (data.success) {
-                window.location.href = '/admin/dashboard';
-            } else {
-                alert(data.error || 'Erro ao fazer login');
+                const data = await response.json();
+
+                if (data.success) {
+                    submitBtn.textContent = 'Sucesso!';
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard';
+                    }, 500);
+                } else {
+                    alert(data.error || 'Erro ao fazer login');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            } catch (error) {
+                alert('Erro de conexão. Tente novamente.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
             }
         }
     </script>
