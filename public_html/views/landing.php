@@ -5,7 +5,7 @@ session_start();
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Zife Order - Cardápio Digital para Restaurantes</title>
     <link rel="stylesheet" href="/public/css/landing.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,6 @@ session_start();
         <div class="container">
             <div class="navbar-content">
                 <div class="logo">
-                    <span class="logo-icon">🍽️</span>
                     <span class="logo-text">Zife Order</span>
                 </div>
                 <div class="nav-links">

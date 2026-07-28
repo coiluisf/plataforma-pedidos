@@ -5,7 +5,7 @@ $order_number = $_GET['order'] ?? null;
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Pedido Confirmado - Zife Order</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -241,19 +241,19 @@ $order_number = $_GET['order'] ?? null;
                     <div class="tracker-title">Status do Seu Pedido</div>
                     <div class="status-steps">
                         <div class="status-step">
-                            <div class="step-circle active">✓</div>
+                            <div class="step-circle active">1</div>
                             <div class="step-name">Novo</div>
                         </div>
                         <div class="status-step">
-                            <div class="step-circle">👨‍🍳</div>
+                            <div class="step-circle">2</div>
                             <div class="step-name">Preparo</div>
                         </div>
                         <div class="status-step">
-                            <div class="step-circle">⚡</div>
+                            <div class="step-circle">3</div>
                             <div class="step-name">Pronto</div>
                         </div>
                         <div class="status-step">
-                            <div class="step-circle">🚗</div>
+                            <div class="step-circle">4</div>
                             <div class="step-name">Entregue</div>
                         </div>
                     </div>

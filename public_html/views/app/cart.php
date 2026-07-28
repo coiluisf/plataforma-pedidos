@@ -5,7 +5,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Sacola - Zife Order</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -168,8 +168,8 @@
         <div class="phone-notch"></div>
         <div class="phone-screen">
             <div class="app-header">
-                <div class="app-title">🛒 Sacola</div>
-                <button onclick="goToMenu()">✕</button>
+                <div class="app-title">Sacola</div>
+                <button onclick="goToMenu()">×</button>
             </div>
 
             <div class="app-content" id="cartContent"></div>
@@ -198,7 +198,7 @@
             if (cart.length === 0) {
                 document.getElementById('cartContent').innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-state-icon">🛒</div>
+                        <div class="empty-state-icon">∘</div>
                         <p>Sua sacola está vazia</p>
                     </div>
                 `;
