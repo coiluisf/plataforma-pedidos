@@ -11,7 +11,7 @@ $request_uri = rtrim($request_uri, '/') ?: '/';
 
 // Route logic
 if ($request_uri === '/') {
-    include __DIR__ . '/views/landing.php';
+    include __DIR__ . '/views/landing-premium.php';
 } elseif (strpos($request_uri, '/checkout-plan') === 0) {
     include __DIR__ . '/views/checkout-plan.php';
 } elseif (strpos($request_uri, '/payment-success') === 0) {
