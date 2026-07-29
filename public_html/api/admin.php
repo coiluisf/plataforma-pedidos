@@ -20,8 +20,11 @@ if ($method === 'GET') {
     }
 } elseif ($method === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
+    $action = $input['action'] ?? null;
 
-    if (strpos($path, '/api/admin/settings') !== false) {
+    if ($action === 'update-restaurant') {
+        updateRestaurant($input);
+    } elseif (strpos($path, '/api/admin/settings') !== false) {
         updateSettings($input);
     } elseif (strpos($path, '/api/admin/payment-method') !== false) {
         updatePaymentMethod($input);
@@ -191,5 +194,41 @@ function updatePaymentMethod($data) {
     } catch (Exception $e) {
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao atualizar método de pagamento']);
+    }
+}
+
+function updateRestaurant($data) {
+    $db = Database::getInstance();
+    $restaurant_id = $_SESSION['restaurant_id'];
+
+    $allowed_fields = ['name', 'address', 'phone', 'hours_start', 'hours_end', 'description'];
+    $updates = [];
+    $params = [];
+
+    foreach ($allowed_fields as $field) {
+        if (isset($data[$field])) {
+            $updates[] = $field . ' = ?';
+            $params[] = $data[$field];
+        }
+    }
+
+    if (empty($updates)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Nenhum dado para atualizar']);
+        return;
+    }
+
+    $params[] = $restaurant_id;
+
+    try {
+        $db->update(
+            'UPDATE restaurants SET ' . implode(', ', $updates) . ' WHERE id = ?',
+            $params
+        );
+
+        echo json_encode(['success' => true, 'message' => 'Configurações atualizadas com sucesso']);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Erro ao atualizar configurações: ' . $e->getMessage()]);
     }
 }

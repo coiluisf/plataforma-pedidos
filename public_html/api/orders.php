@@ -141,12 +141,13 @@ function createOrder($data) {
                 [$item['id']]
             );
             if ($menu_item) {
+                $qty = $item['qty'] ?? $item['quantity'] ?? 0;
                 $menu_items[] = [
                     'id' => $menu_item['id'],
                     'price' => $menu_item['price'],
-                    'quantity' => $item['quantity']
+                    'quantity' => $qty
                 ];
-                $subtotal += $menu_item['price'] * $item['quantity'];
+                $subtotal += $menu_item['price'] * $qty;
             }
         }
 

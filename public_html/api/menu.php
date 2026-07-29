@@ -86,12 +86,12 @@ function getMenuByRestaurant($restaurant_id) {
     echo json_encode($menu);
 }
 
-function getMenuByCategory($restaurant_id) {
+function getMenuByCategory($category_id) {
     $db = Database::getInstance();
 
     $items = $db->fetchAll(
-        'SELECT id, name, description, price, image_url, available FROM menu_items WHERE restaurant_id = ? AND available = TRUE ORDER BY display_order',
-        [$restaurant_id]
+        'SELECT id, name, description, price, image_url, available FROM menu_items WHERE category_id = ? AND available = TRUE ORDER BY display_order',
+        [$category_id]
     );
 
     echo json_encode($items);
