@@ -57,20 +57,24 @@ if (isset($_SESSION['restaurant_id'])) {
         }
         .form-input {
             width: 100%;
-            padding: 12px;
+            padding: 14px 16px;
+            min-height: 44px;
             border: 1px solid #E0D5CA;
             border-radius: 8px;
             font-family: 'Instrument Sans';
             font-size: 14px;
+            box-sizing: border-box;
         }
         .form-input:focus {
-            outline: none;
+            outline: 2px solid #E8491D;
+            outline-offset: 2px;
             border-color: #E8491D;
             box-shadow: 0 0 0 3px rgba(232, 73, 29, 0.1);
         }
         .btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px 16px;
+            min-height: 44px;
             background: #E8491D;
             color: white;
             border: none;
@@ -80,6 +84,7 @@ if (isset($_SESSION['restaurant_id'])) {
             cursor: pointer;
             font-family: 'Instrument Sans';
             transition: background 0.3s ease;
+            box-sizing: border-box;
         }
         .btn:hover {
             background: #C7380F;
@@ -205,13 +210,13 @@ if (isset($_SESSION['restaurant_id'])) {
 
         <form onsubmit="handleLogin(event)">
             <div class="form-group">
-                <label class="form-label">Email do Restaurante</label>
+                <label for="email" class="form-label">Email do Restaurante</label>
                 <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
                 <div class="error" id="emailError"></div>
             </div>
 
             <div class="form-group">
-                <label class="form-label">Senha</label>
+                <label for="password" class="form-label">Senha</label>
                 <input type="password" id="password" class="form-input" placeholder="Sua senha" required>
                 <div class="error" id="passwordError"></div>
             </div>
@@ -231,16 +236,18 @@ if (isset($_SESSION['restaurant_id'])) {
     </div>
 
     <!-- Error Modal -->
-    <div class="error-modal" id="errorModal">
+    <div class="error-modal" id="errorModal" role="dialog" aria-modal="true" aria-labelledby="errorTitle" aria-live="polite">
         <div class="error-modal-content">
             <div class="error-icon">⚠️</div>
-            <h2>Erro ao Conectar</h2>
+            <h2 id="errorTitle">Erro ao Conectar</h2>
             <p id="errorMessage">Verifique suas credenciais e tente novamente</p>
             <button class="error-close-btn" onclick="closeErrorModal()">Tentar Novamente</button>
         </div>
     </div>
 
     <script>
+        let isLoginProcessing = false;
+
         function showErrorModal(message) {
             const errorMessage = document.getElementById('errorMessage');
             const errorModal = document.getElementById('errorModal');
@@ -255,6 +262,11 @@ if (isset($_SESSION['restaurant_id'])) {
         async function handleLogin(e) {
             e.preventDefault();
 
+            // Prevent multiple submissions
+            if (isLoginProcessing) {
+                return;
+            }
+
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const submitBtn = document.getElementById('submitBtn');
@@ -267,7 +279,8 @@ if (isset($_SESSION['restaurant_id'])) {
                 return;
             }
 
-            // Show loading state
+            // Mark as processing and disable button immediately
+            isLoginProcessing = true;
             submitBtn.disabled = true;
             btnText.style.display = 'none';
             loadingState.style.display = 'flex';
@@ -293,6 +306,7 @@ if (isset($_SESSION['restaurant_id'])) {
                 } else {
                     // Erro de credenciais ou servidor
                     showErrorModal(data.error || 'Email ou senha inválidos. Tente novamente.');
+                    isLoginProcessing = false;
                     submitBtn.disabled = false;
                     btnText.style.display = 'block';
                     loadingState.style.display = 'none';
@@ -300,6 +314,7 @@ if (isset($_SESSION['restaurant_id'])) {
             } catch (error) {
                 console.error('Login error:', error);
                 showErrorModal('Erro de conexão. Verifique sua internet e tente novamente.');
+                isLoginProcessing = false;
                 submitBtn.disabled = false;
                 btnText.style.display = 'block';
                 loadingState.style.display = 'none';
