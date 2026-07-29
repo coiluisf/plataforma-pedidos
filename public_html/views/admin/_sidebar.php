@@ -33,6 +33,6 @@
         </a>
     </nav>
     <div class="sidebar-footer">
-        <a href="/auth/logout" class="btn-logout">Sair</a>
+        <a href="/admin/logout" class="btn-logout">Sair</a>
     </div>
 </aside>
