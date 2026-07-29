@@ -48,8 +48,8 @@ function routeAdmin($uri) {
         case 'tables':
         case 'reports':
         case 'settings':
-            // Use base layout for all admin pages
-            include __DIR__ . '/views/admin/base-layout.php';
+            // Use premium base layout for all admin pages
+            include __DIR__ . '/views/admin/base-layout-premium.php';
             break;
         case 'logout':
             // Expirar o cookie de sessão
