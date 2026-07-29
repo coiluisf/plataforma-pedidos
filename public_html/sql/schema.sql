@@ -64,7 +64,7 @@ CREATE TABLE orders (
   customer_phone VARCHAR(20),
   customer_email VARCHAR(255),
   order_type ENUM('delivery', 'table', 'counter') DEFAULT 'delivery',
-  status ENUM('new', 'preparing', 'ready', 'delivered', 'cancelled') DEFAULT 'new',
+  status ENUM('pending', 'preparing', 'ready', 'completed', 'cancelled') DEFAULT 'pending',
   delivery_address VARCHAR(500),
   delivery_fee DECIMAL(10, 2) DEFAULT 0,
   subtotal DECIMAL(10, 2) NOT NULL,

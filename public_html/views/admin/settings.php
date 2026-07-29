@@ -4,7 +4,7 @@ $restaurant_id = $_SESSION['restaurant_id'];
 
 // Fetch restaurant settings
 $restaurant = $db->fetch(
-    'SELECT id, name, address, phone, hours_start, hours_end, description FROM restaurants WHERE id = ?',
+    'SELECT id, name, address, phone, business_hours_open, business_hours_close, description FROM restaurants WHERE id = ?',
     [$restaurant_id]
 );
 ?>
@@ -50,22 +50,22 @@ $restaurant = $db->fetch(
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="hours_start">Horário de Abertura</label>
-                    <input 
-                        type="time" 
-                        id="hours_start" 
-                        name="hours_start" 
-                        value="<?php echo htmlspecialchars($restaurant['hours_start'] ?? '10:00'); ?>"
+                    <label for="business_hours_open">Horário de Abertura</label>
+                    <input
+                        type="time"
+                        id="business_hours_open"
+                        name="business_hours_open"
+                        value="<?php echo htmlspecialchars($restaurant['business_hours_open'] ?? '10:00'); ?>"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="hours_end">Horário de Fechamento</label>
-                    <input 
-                        type="time" 
-                        id="hours_end" 
-                        name="hours_end" 
-                        value="<?php echo htmlspecialchars($restaurant['hours_end'] ?? '22:00'); ?>"
+                    <label for="business_hours_close">Horário de Fechamento</label>
+                    <input
+                        type="time"
+                        id="business_hours_close"
+                        name="business_hours_close"
+                        value="<?php echo htmlspecialchars($restaurant['business_hours_close'] ?? '22:00'); ?>"
                     >
                 </div>
             </div>
@@ -239,8 +239,8 @@ document.getElementById('settingsForm').addEventListener('submit', async functio
         name: document.getElementById('name').value,
         address: document.getElementById('address').value,
         phone: document.getElementById('phone').value,
-        hours_start: document.getElementById('hours_start').value,
-        hours_end: document.getElementById('hours_end').value,
+        business_hours_open: document.getElementById('business_hours_open').value,
+        business_hours_close: document.getElementById('business_hours_close').value,
         description: document.getElementById('description').value
     };
 

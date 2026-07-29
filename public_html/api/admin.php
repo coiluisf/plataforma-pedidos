@@ -201,7 +201,7 @@ function updateRestaurant($data) {
     $db = Database::getInstance();
     $restaurant_id = $_SESSION['restaurant_id'];
 
-    $allowed_fields = ['name', 'address', 'phone', 'hours_start', 'hours_end', 'description'];
+    $allowed_fields = ['name', 'address', 'phone', 'business_hours_open', 'business_hours_close', 'description'];
     $updates = [];
     $params = [];
 
