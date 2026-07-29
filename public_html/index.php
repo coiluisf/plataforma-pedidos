@@ -36,25 +36,14 @@ function routeAdmin($uri) {
 
     switch ($action) {
         case 'dashboard':
-            include __DIR__ . '/views/admin/dashboard.php';
-            break;
         case 'orders':
-            include __DIR__ . '/views/admin/orders.php';
-            break;
         case 'menu':
-            include __DIR__ . '/views/admin/menu.php';
-            break;
         case 'payments':
-            include __DIR__ . '/views/admin/payments.php';
-            break;
         case 'tables':
-            include __DIR__ . '/views/admin/tables.php';
-            break;
         case 'reports':
-            include __DIR__ . '/views/admin/reports.php';
-            break;
         case 'settings':
-            include __DIR__ . '/views/admin/settings.php';
+            // Use base layout for all admin pages
+            include __DIR__ . '/views/admin/base-layout.php';
             break;
         case 'logout':
             // Expirar o cookie de sessão

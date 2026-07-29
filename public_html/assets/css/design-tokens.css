@@ -1,0 +1,160 @@
+:root {
+  /* Cores */
+  --color-primary: #E8491D;
+  --color-primary-hover: #C7380F;
+  --color-cream: #FBEEE3;
+  --color-dark: #1B1512;
+  --color-secondary: #4A3E36;
+  --color-tertiary: #7A6A5E;
+  --color-success: #4B7F52;
+  --color-success-dark: #3A6640;
+  --color-warning: #C98A1D;
+  --color-warning-dark: #9C6B15;
+  --color-neutral-light: #F5F1ED;
+  --color-neutral-gray: #E0D5CA;
+
+  /* Tipografia */
+  --font-title: "Bricolage Grotesque", sans-serif;
+  --font-body: "Instrument Sans", sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-dark);
+}
+
+body {
+  background-color: var(--color-cream);
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: 48px; }
+h2 { font-size: 36px; }
+h3 { font-size: 28px; }
+h4 { font-size: 24px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+/* Componentes base */
+button, a.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  min-height: 44px;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.btn-primary, a.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+button.btn-primary:hover, a.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+button.btn-secondary, a.btn-secondary {
+  background-color: var(--color-dark);
+  color: white;
+}
+
+button.btn-secondary:hover, a.btn-secondary:hover {
+  background-color: var(--color-secondary);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 12px 16px;
+  min-height: 44px;
+  border: 1px solid var(--color-neutral-gray);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+/* Badge de status */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+}
+
+.badge-novo { background-color: var(--color-primary); }
+.badge-em-preparo { background-color: var(--color-warning); }
+.badge-pronto { background-color: var(--color-success); }
+.badge-entregue { background-color: var(--color-tertiary); }
+.badge-completed { background-color: var(--color-tertiary); }
+.badge-pending { background-color: var(--color-primary); }
+.badge-preparing { background-color: var(--color-warning); }
+.badge-ready { background-color: var(--color-success); }
+
+/* Card */
+.card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
