@@ -129,7 +129,7 @@ if (isset($_SESSION['restaurant_id'])) {
                     <li>✓ 20 itens no cardápio</li>
                     <li>✓ Cardápio digital</li>
                 </ul>
-                <a href="/auth/register" class="btn btn-secondary btn-lg">Começar Grátis</a>
+                <a href="/checkout-plan?plan=free" class="btn btn-secondary btn-lg">Começar Grátis</a>
             </div>
 
             <div class="pricing-card pricing-featured">
@@ -143,7 +143,7 @@ if (isset($_SESSION['restaurant_id'])) {
                     <li>✓ Tudo do Grátis</li>
                     <li>✓ Suporte por email</li>
                 </ul>
-                <a href="/auth/register" class="btn btn-primary btn-lg">Começar Agora</a>
+                <a href="/checkout-plan?plan=starter" class="btn btn-primary btn-lg">Começar Agora</a>
             </div>
 
             <div class="pricing-card">
@@ -157,7 +157,7 @@ if (isset($_SESSION['restaurant_id'])) {
                     <li>✓ Suporte prioritário</li>
                     <li>✓ Relatórios avançados</li>
                 </ul>
-                <a href="/auth/register" class="btn btn-secondary btn-lg">Começar Agora</a>
+                <a href="/checkout-plan?plan=pro" class="btn btn-secondary btn-lg">Começar Agora</a>
             </div>
         </div>
     </section>

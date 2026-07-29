@@ -80,6 +80,7 @@ function handleRegister($data) {
     $password = $data['password'] ?? null;
     $password_confirm = $data['password_confirm'] ?? null;
     $phone = $data['phone'] ?? null;
+    $plan = $data['plan'] ?? 'free';
 
     // Validation
     if (!$name || !$email || !$password) {
@@ -106,6 +107,12 @@ function handleRegister($data) {
         return;
     }
 
+    // Validate plan
+    $valid_plans = array_keys(PLANS);
+    if (!in_array($plan, $valid_plans)) {
+        $plan = 'free';
+    }
+
     // Check if email exists
     $existing = $db->fetch('SELECT id FROM restaurants WHERE email = ?', [$email]);
     if ($existing) {
@@ -121,7 +128,7 @@ function handleRegister($data) {
     try {
         $restaurant_id = $db->insert(
             'INSERT INTO restaurants (name, email, password, phone, plan) VALUES (?, ?, ?, ?, ?)',
-            [$name, $email, $hashed_password, $phone, 'free']
+            [$name, $email, $hashed_password, $phone, $plan]
         );
 
         // Create default categories
@@ -141,15 +148,13 @@ function handleRegister($data) {
 
         $_SESSION['restaurant_id'] = $restaurant_id;
         $_SESSION['restaurant_name'] = $name;
-        $_SESSION['plan'] = 'free';
+        $_SESSION['plan'] = $plan;
 
         echo json_encode([
             'success' => true,
-            'restaurant' => [
-                'id' => $restaurant_id,
-                'name' => $name,
-                'plan' => 'free'
-            ]
+            'restaurant_id' => $restaurant_id,
+            'name' => $name,
+            'plan' => $plan
         ]);
     } catch (Exception $e) {
         http_response_code(500);

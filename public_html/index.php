@@ -12,6 +12,12 @@ $request_uri = rtrim($request_uri, '/') ?: '/';
 // Route logic
 if ($request_uri === '/') {
     include __DIR__ . '/views/landing.php';
+} elseif (strpos($request_uri, '/checkout-plan') === 0) {
+    include __DIR__ . '/views/checkout-plan.php';
+} elseif (strpos($request_uri, '/payment-success') === 0) {
+    include __DIR__ . '/views/payment-success.php';
+} elseif (strpos($request_uri, '/payment-failure') === 0) {
+    include __DIR__ . '/views/payment-failure.php';
 } elseif (strpos($request_uri, '/admin') === 0) {
     if (!isset($_SESSION['restaurant_id'])) {
         header('Location: /auth/login');
@@ -99,6 +105,9 @@ function routeApi($uri, $method) {
             break;
         case 'payments':
             include __DIR__ . '/api/payments.php';
+            break;
+        case 'checkout':
+            include __DIR__ . '/api/checkout.php';
             break;
         case 'admin':
             include __DIR__ . '/api/admin.php';
