@@ -1,6 +1,16 @@
 <?php
-// Start session if not already started
+// Configure session before starting
 if (session_status() === PHP_SESSION_NONE) {
+    // Set secure session cookie parameters
+    $cookie_options = [
+        'lifetime' => 86400 * 7, // 7 days
+        'path' => '/',
+        'domain' => $_SERVER['HTTP_HOST'] ?? '',
+        'secure' => !empty($_SERVER['HTTPS']),
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ];
+    session_set_cookie_params($cookie_options);
     session_start();
 }
 
