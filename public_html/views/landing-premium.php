@@ -1257,52 +1257,145 @@ if (isset($_SESSION['restaurant_id'])) {
 
     <!-- Dashboard Preview -->
     <section class="dashboard-preview" id="demo" data-reveal>
-        <h2>Seu painel de controle</h2>
+        <h2>Painel admin + App cliente + Pedidos em tempo real</h2>
         <p>Gerenciar seu restaurante nunca foi tão simples</p>
 
-        <div class="dashboard-mockup">
-            <div class="dashboard-header">
-                <div class="dashboard-header-left">
-                    <div class="dot" style="background: #E45D22;"></div>
-                    <div class="dot" style="background: #FFC107;"></div>
-                    <div class="dot" style="background: #4CAF50;"></div>
-                </div>
-                <div class="dashboard-header-middle">zife-order.com/admin/dashboard</div>
-                <div></div>
+        <div style="margin: 3rem 0;">
+            <img src="/public/images/dashboard-admin-devices.png" alt="Dashboard administrativo em laptop, tablet e smartphone" style="width: 100%; max-width: 1000px; border-radius: 12px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12); margin: 0 auto; display: block;">
+        </div>
+    </section>
+
+    <!-- Mobile App Section -->
+    <section class="features" data-reveal style="padding: 4rem 2rem; background: var(--color-bg-light);">
+        <h2 class="section-title">Interface do cliente é simples e intuitiva</h2>
+        <p class="section-subtitle">Seus clientes encontram, escolhem e pagam em segundos</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto; align-items: center;">
+            <div>
+                <img src="/public/images/app-menu-screenshot.png" alt="Screenshot do cardápio digital no smartphone" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
             </div>
-            <div class="dashboard-body">
-                <div class="dashboard-sidebar">
-                    <div class="dashboard-menu-item">Dashboard</div>
-                    <div class="dashboard-menu-item">Pedidos</div>
-                    <div class="dashboard-menu-item">Cardápio</div>
-                    <div class="dashboard-menu-item">Mesas</div>
-                    <div class="dashboard-menu-item">Relatórios</div>
-                    <div class="dashboard-menu-item">Pagamentos</div>
-                    <div class="dashboard-menu-item">Clientes</div>
-                    <div class="dashboard-menu-item">Configurações</div>
-                </div>
-                <div class="dashboard-content">
-                    <div class="dashboard-stat">
-                        <div class="dashboard-stat-label">Pedidos hoje</div>
-                        <div class="dashboard-stat-value">24</div>
-                        <div class="dashboard-stat-change">+12% vs ontem</div>
-                    </div>
-                    <div class="dashboard-stat">
-                        <div class="dashboard-stat-label">Faturamento</div>
-                        <div class="dashboard-stat-value">R$ 1.240</div>
-                        <div class="dashboard-stat-change">+8% vs ontem</div>
-                    </div>
-                    <div class="dashboard-stat">
-                        <div class="dashboard-stat-label">Taxa média</div>
-                        <div class="dashboard-stat-value">R$ 52</div>
-                        <div class="dashboard-stat-change">Ticket médio</div>
-                    </div>
-                    <div class="dashboard-stat">
-                        <div class="dashboard-stat-label">Clientes novos</div>
-                        <div class="dashboard-stat-value">8</div>
-                        <div class="dashboard-stat-change">+3 vs ontem</div>
-                    </div>
-                </div>
+            <div>
+                <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 1.5rem;">Cardápio Digital</h3>
+                <ul style="list-style: none; gap: 1.5rem; display: flex; flex-direction: column;">
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Categorias organizadas</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Navegação intuitiva por categorias</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Fotos profissionais</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Cada prato com imagem de alta qualidade</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Descrições detalhadas</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Ingredientes, alergênicos, alérgicos</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Busca rápida</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Encontra qualquer prato em segundos</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section class="features" data-reveal style="padding: 4rem 2rem;">
+        <h2 class="section-title">QR Code na mesa</h2>
+        <p class="section-subtitle">Seus clientes acessam o cardápio digitalmente, sem impressos</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto; align-items: center;">
+            <div>
+                <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 1.5rem;">Sem papel. Sem desperdício.</h3>
+                <ul style="list-style: none; gap: 1.5rem; display: flex; flex-direction: column;">
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Um único QR Code</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Mesmo QR para todas as mesas</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Acesso instantâneo</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Sem instalar app, sem login</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Atualização em tempo real</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Mude preços e disponibilidade al momento</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Suporta várias mesas</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Cada mesa recebe seu próprio pedido</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <img src="/public/images/qr-code-table.png" alt="QR Code na mesa do restaurante" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="features" data-reveal style="padding: 4rem 2rem; background: var(--color-bg-light);">
+        <h2 class="section-title">Checkout profissional e seguro</h2>
+        <p class="section-subtitle">PIX, cartão e débito integrado</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto; align-items: center;">
+            <div>
+                <img src="/public/images/checkout-payment.png" alt="Tela de checkout com opções de pagamento PIX e cartão" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+            </div>
+            <div>
+                <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 1.5rem;">Receba pagamentos na hora</h3>
+                <ul style="list-style: none; gap: 1.5rem; display: flex; flex-direction: column;">
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">PIX instantâneo</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Dinheiro na conta em segundos</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Cartão de crédito seguro</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Integrado com Mercado Pago</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Sem taxa por transação</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Você fica com 100% do pedido</span>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <span style="color: var(--color-primary); font-weight: 700; font-size: 20px;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Cupons e descontos</strong>
+                            <span style="color: var(--color-text-secondary); font-size: 14px;">Crie promoções diretamente no painel</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
